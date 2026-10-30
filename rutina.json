@@ -1,0 +1,859 @@
+{
+  "versionEsquema": "1.0.0",
+  "versionRutina": "1.0",
+  "nombre": "Rutina de calistenia de Adrián",
+  "fechaInicio": "2026-11-02",
+  "zonaHoraria": "America/Mexico_City",
+  "duracionSemanas": 8,
+  "calendario": {
+    "semanaImpar": {
+      "lunes": "A",
+      "martes": "recuperacionMartes",
+      "miercoles": "B",
+      "jueves": "recuperacionJueves",
+      "viernes": "A",
+      "sabado": "movilidadSabado",
+      "domingo": "descanso"
+    },
+    "semanaPar": {
+      "lunes": "B",
+      "martes": "recuperacionMartes",
+      "miercoles": "A",
+      "jueves": "recuperacionJueves",
+      "viernes": "B",
+      "sabado": "movilidadSabado",
+      "domingo": "descanso"
+    }
+  },
+  "calculoCalendario": {
+    "inicioSemana": "lunes",
+    "semanaInicial": 1,
+    "antesDelInicio": "mostrar_previa_sin_iniciar",
+    "despuesDelPrograma": "mostrar_programa_finalizado",
+    "progresionAutomatica": false
+  },
+  "interfaz": {
+    "encabezadoCompacto": true,
+    "seleccionarDia": true,
+    "timerFijoEnMovil": true,
+    "controlesFijosEnMovil": true,
+    "desplazarAlEjercicioActivo": true,
+    "tecnicaDesplegable": true,
+    "columnas": [
+      "nombre",
+      "descripcion",
+      "dosis",
+      "series",
+      "descanso"
+    ],
+    "mostrarTiempoTotal": true,
+    "estados": {
+      "preparacion": {
+        "texto": "Prepárate",
+        "color": "#6c757d"
+      },
+      "ejercicio": {
+        "texto": "Ejercicio",
+        "color": "#198754"
+      },
+      "descanso": {
+        "texto": "Descanso",
+        "color": "#0d6efd"
+      },
+      "espera": {
+        "texto": "Estoy listo",
+        "color": "#6c757d"
+      },
+      "pausa": {
+        "texto": "Pausado",
+        "color": "#6c757d"
+      },
+      "finalizado": {
+        "texto": "Sesión completada",
+        "color": "#198754"
+      }
+    },
+    "botones": {
+      "iniciar": "Iniciar",
+      "pausar": "Pausar",
+      "continuar": "Continuar",
+      "terminarSerie": "Terminé la serie",
+      "terminarLado": "Terminé este lado",
+      "listo": "Estoy listo",
+      "omitir": "Omitir ejercicio",
+      "terminarAntes": "Terminar ejercicio"
+    }
+  },
+  "ejecucion": {
+    "preparacionSegundos": 3,
+    "mensajeInicio": "¡GO!",
+    "orden": "todas_las_series_antes_del_siguiente_ejercicio",
+    "repeticiones": {
+      "timer": "ascendente",
+      "avance": "manual"
+    },
+    "tiempo": {
+      "timer": "descendente",
+      "avance": "automatico",
+      "usarCampo": "duracionSegundos.objetivo"
+    },
+    "descanso": {
+      "timer": "descendente",
+      "avance": "automatico",
+      "entreSeries": true,
+      "entreEjercicios": "usar_descanso_del_ejercicio_terminado",
+      "trasUltimoEjercicio": false,
+      "siSegundosCero": "pasar_sin_descanso"
+    },
+    "lados": {
+      "secuencial": "izquierdo_luego_derecho",
+      "alternado": "completar_repeticiones_de_ambos_lados",
+      "descansarSoloTrasAmbosLados": true,
+      "cambioDeLado": "esperar_confirmacion",
+      "repeticionesSecuenciales": "confirmar_primer_lado_y_luego_serie"
+    },
+    "pausa": {
+      "congelarTimerFase": true,
+      "congelarTiempoTotal": true
+    },
+    "tiempoTotal": {
+      "incluirPreparacion": false,
+      "incluirEjercicio": true,
+      "incluirDescanso": true,
+      "incluirEspera": true,
+      "incluirPausa": false
+    },
+    "opcional": {
+      "incluirPorDefecto": false,
+      "seleccionarAntesDeIniciar": true
+    },
+    "omitir": {
+      "alcance": "resto_del_ejercicio",
+      "registrarComo": "omitido",
+      "siguientePaso": "esperar_confirmacion",
+      "contarComoCompletado": false
+    },
+    "finalizacionAnticipada": {
+      "permitida": true,
+      "registrarComo": "parcial",
+      "siguientePaso": "esperar_confirmacion"
+    }
+  },
+  "reglasGenerales": [
+    "Terminar cada serie sintiendo que podrías hacer otras 3 repeticiones con buena técnica.",
+    "Respirar con normalidad; exhalar durante el esfuerzo.",
+    "Usar silla firme contra la pared y apoyos que no se deslicen.",
+    "En ejercicios nuevos buscar movimiento sin dolor en el empeine; reducir recorrido u omitir si aparece.",
+    "El tobillo no debe quedar peor esa tarde ni a la mañana siguiente.",
+    "Suspender el ejercicio que cause dolor creciente, cojera, inflamación o inestabilidad y revisarlo con el fisioterapeuta."
+  ],
+  "rehabilitacion": {
+    "tipo": "recordatorio",
+    "incluirEnSecuencia": false,
+    "frecuenciaDiaria": 3,
+    "maximoMinutosPorSesion": 10,
+    "descripcion": "Elevaciones de talones y ejercicios de flexión según la pauta del fisioterapeuta. No añadir series desde esta aplicación.",
+    "nota": "Mantener la pauta clínica también en días de fuerza y descanso. Comunicar el dolor durante su ejecución para revisar recorrido y dosis."
+  },
+  "progresion": {
+    "automatica": false,
+    "seriesIniciales": 2,
+    "primeraRevisionTrasSemanas": 1,
+    "segundaRevisionTrasSemanas": 2,
+    "criterio": "Completar el máximo del rango en dos sesiones con buena técnica, unas 3 repeticiones en reserva y sin empeoramiento del tobillo.",
+    "orden": [
+      "aumentar_repeticiones_dentro_del_rango",
+      "valorar_tercera_serie_en_un_ejercicio",
+      "valorar_variante_mas_dificil"
+    ],
+    "nota": "No aumentar series y dificultad a la vez. Las semanas no obligan a progresar."
+  },
+  "rutinas": {
+    "A": {
+      "nombre": "Fuerza A",
+      "tipo": "fuerza",
+      "ejercicios": [
+        {
+          "id": "calentamiento",
+          "nombre": "Calentamiento",
+          "descripcion": "Movilidad sentado y ensayo suave de los primeros movimientos.",
+          "fase": "calentamiento",
+          "opcional": false,
+          "series": 1,
+          "tipo": "tiempo",
+          "repeticiones": null,
+          "duracionSegundos": {
+            "min": 300,
+            "max": 420,
+            "objetivo": 300
+          },
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 0,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Círculos de hombros, flexión y extensión de rodillas y marcha suave sentado.",
+            "Después, 5 repeticiones fáciles de levantarse de la silla y lagartijas en pared, si son cómodas."
+          ],
+          "adaptacionTobillo": "Evitar movimientos que provoquen dolor en el empeine."
+        },
+        {
+          "id": "silla",
+          "nombre": "Sentarse y levantarse de una silla",
+          "descripcion": "Muslos y glúteos.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "repeticiones",
+          "repeticiones": {
+            "min": 8,
+            "max": 12
+          },
+          "duracionSegundos": null,
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 90,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Silla firme contra la pared.",
+            "Pies completamente apoyados; bajar en 3 segundos.",
+            "Usar las manos si hace falta."
+          ],
+          "adaptacionTobillo": "Reducir recorrido con una silla más alta y firme si molesta; si persiste, omitir."
+        },
+        {
+          "id": "lagartijas-pared",
+          "nombre": "Lagartijas en pared",
+          "descripcion": "Pecho y tríceps.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "repeticiones",
+          "repeticiones": {
+            "min": 6,
+            "max": 12
+          },
+          "duracionSegundos": null,
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 90,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Manos a la altura del pecho; mantener el cuerpo alineado.",
+            "Codos ligeramente hacia atrás.",
+            "Acercar los pies a la pared para facilitarlo."
+          ],
+          "adaptacionTobillo": "No continuar si carga dolorosamente el tobillo."
+        },
+        {
+          "id": "puente",
+          "nombre": "Puente de glúteos",
+          "descripcion": "Glúteos y extensión de cadera.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "repeticiones",
+          "repeticiones": {
+            "min": 10,
+            "max": 15
+          },
+          "duracionSegundos": null,
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 90,
+            "rangoSegundos": {
+              "min": 60,
+              "max": 90
+            }
+          },
+          "recomendaciones": [
+            "Boca arriba, rodillas dobladas y pies apoyados.",
+            "Elevar la cadera sin arquear la espalda; pausar 2 segundos arriba."
+          ],
+          "adaptacionTobillo": "No ponerse de puntas; omitir si causa dolor."
+        },
+        {
+          "id": "brazos-w",
+          "nombre": "Brazos en W, boca abajo",
+          "descripcion": "Control de espalda alta y omóplatos.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "repeticiones",
+          "repeticiones": {
+            "min": 8,
+            "max": 12
+          },
+          "duracionSegundos": null,
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 60,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Formar una W con los brazos y elevar ligeramente manos y codos.",
+            "Acercar los omóplatos sin levantar el pecho ni encoger los hombros.",
+            "Mantener el cuello relajado."
+          ],
+          "adaptacionTobillo": "Si apoyar el empeine molesta, omitir."
+        },
+        {
+          "id": "dead-bug",
+          "nombre": "Dead bug con toque de talón",
+          "descripcion": "Estabilidad abdominal.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "repeticiones",
+          "repeticiones": {
+            "min": 6,
+            "max": 8
+          },
+          "duracionSegundos": null,
+          "lados": {
+            "modo": "alternado",
+            "orden": [],
+            "dosisPorLado": true,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 60,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Boca arriba, caderas y rodillas a unos 90 grados.",
+            "Bajar un talón al suelo, volver y alternar.",
+            "Mantener estable la pelvis y no arquear la zona lumbar."
+          ],
+          "adaptacionTobillo": "Tocar el suelo suavemente, sin impacto."
+        }
+      ]
+    },
+    "B": {
+      "nombre": "Fuerza B",
+      "tipo": "fuerza",
+      "ejercicios": [
+        {
+          "id": "calentamiento",
+          "nombre": "Calentamiento",
+          "descripcion": "Movilidad sentado y ensayo suave de los primeros movimientos.",
+          "fase": "calentamiento",
+          "opcional": false,
+          "series": 1,
+          "tipo": "tiempo",
+          "repeticiones": null,
+          "duracionSegundos": {
+            "min": 300,
+            "max": 420,
+            "objetivo": 300
+          },
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 0,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Círculos de hombros, flexión y extensión de rodillas y marcha suave sentado.",
+            "Después, 5 repeticiones fáciles de levantarse de la silla y lagartijas en pared, si son cómodas."
+          ],
+          "adaptacionTobillo": "Evitar movimientos que provoquen dolor en el empeine."
+        },
+        {
+          "id": "silla",
+          "nombre": "Sentarse y levantarse de una silla",
+          "descripcion": "Muslos y glúteos.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "repeticiones",
+          "repeticiones": {
+            "min": 8,
+            "max": 12
+          },
+          "duracionSegundos": null,
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 90,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Silla firme contra la pared.",
+            "Pies completamente apoyados; bajar en 3 segundos.",
+            "Usar las manos si hace falta."
+          ],
+          "adaptacionTobillo": "Reducir recorrido con una silla más alta y firme si molesta; si persiste, omitir."
+        },
+        {
+          "id": "lagartijas-pared",
+          "nombre": "Lagartijas en pared",
+          "descripcion": "Pecho y tríceps.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "repeticiones",
+          "repeticiones": {
+            "min": 6,
+            "max": 12
+          },
+          "duracionSegundos": null,
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 90,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Manos a la altura del pecho; mantener el cuerpo alineado.",
+            "Codos ligeramente hacia atrás.",
+            "Acercar los pies a la pared para facilitarlo."
+          ],
+          "adaptacionTobillo": "No continuar si carga dolorosamente el tobillo."
+        },
+        {
+          "id": "abduccion-cadera",
+          "nombre": "Abducción de cadera acostado de lado",
+          "descripcion": "Glúteo lateral.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "repeticiones",
+          "repeticiones": {
+            "min": 10,
+            "max": 15
+          },
+          "duracionSegundos": null,
+          "lados": {
+            "modo": "secuencial",
+            "orden": [
+              "izquierdo",
+              "derecho"
+            ],
+            "dosisPorLado": true,
+            "confirmarCambio": true
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 60,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Pierna inferior doblada y superior estirada.",
+            "Elevar la superior sin girar la pelvis ni apuntar el pie al techo."
+          ],
+          "adaptacionTobillo": "Mantener relajado el tobillo."
+        },
+        {
+          "id": "remo-manual",
+          "nombre": "Remo con resistencia de tu otra mano",
+          "descripcion": "Trabajo inicial de tracción con resistencia manual.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "repeticiones",
+          "repeticiones": {
+            "min": 8,
+            "max": 12
+          },
+          "duracionSegundos": null,
+          "lados": {
+            "modo": "secuencial",
+            "orden": [
+              "izquierdo",
+              "derecho"
+            ],
+            "dosisPorLado": true,
+            "confirmarCambio": true
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 60,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Sentado, una mano sujeta suavemente la muñeca contraria y ofrece resistencia.",
+            "Tirar del codo hacia atrás, cerca del torso; resistir también el regreso.",
+            "Sin tirones ni doblar la muñeca.",
+            "La resistencia es limitada y difícil de medir; no equivale a un remo con banda."
+          ],
+          "adaptacionTobillo": ""
+        },
+        {
+          "id": "plancha-lateral",
+          "nombre": "Plancha lateral con rodillas apoyadas",
+          "descripcion": "Abdomen lateral.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "tiempo",
+          "repeticiones": null,
+          "duracionSegundos": {
+            "min": 10,
+            "max": 20,
+            "objetivo": 10
+          },
+          "lados": {
+            "modo": "secuencial",
+            "orden": [
+              "izquierdo",
+              "derecho"
+            ],
+            "dosisPorLado": true,
+            "confirmarCambio": true
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 60,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Apoyar antebrazo, codo bajo el hombro y rodillas dobladas.",
+            "Elevar la cadera y respirar.",
+            "Si es demasiado difícil, acortar a 5–10 segundos."
+          ],
+          "adaptacionTobillo": "Pies relajados, sin cargar el empeine."
+        }
+      ]
+    },
+    "recuperacionMartes": {
+      "nombre": "Recuperación y control",
+      "tipo": "recuperacion",
+      "ejercicios": [
+        {
+          "id": "equilibrio-tandem",
+          "nombre": "Equilibrio tándem con apoyo cercano",
+          "descripcion": "Un pie delante del otro; trabajar ambas posiciones.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "tiempo",
+          "repeticiones": null,
+          "duracionSegundos": {
+            "min": 20,
+            "max": 20,
+            "objetivo": 20
+          },
+          "lados": {
+            "modo": "secuencial",
+            "orden": [
+              "izquierdo",
+              "derecho"
+            ],
+            "dosisPorLado": true,
+            "confirmarCambio": true
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 30,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "En cada lado, colocar ese pie delante.",
+            "Mantener una mesa firme al alcance; separar un poco los pies si cuesta.",
+            "Sin cerrar los ojos ni usar superficies inestables."
+          ],
+          "adaptacionTobillo": "Solo sin dolor ni sensación de fallo."
+        },
+        {
+          "id": "rotacion-tronco",
+          "nombre": "Rotación de tronco sentado",
+          "descripcion": "Movilidad suave del tronco.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 1,
+          "tipo": "repeticiones",
+          "repeticiones": {
+            "min": 6,
+            "max": 6
+          },
+          "duracionSegundos": null,
+          "lados": {
+            "modo": "alternado",
+            "orden": [],
+            "dosisPorLado": true,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 0,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Brazos cruzados; girar suavemente sin forzar."
+          ],
+          "adaptacionTobillo": ""
+        },
+        {
+          "id": "caminata",
+          "nombre": "Caminata opcional en terreno plano",
+          "descripcion": "Terminar antes de la fatiga del tobillo.",
+          "fase": "ejercicio",
+          "opcional": true,
+          "series": 2,
+          "tipo": "tiempo",
+          "repeticiones": null,
+          "duracionSegundos": {
+            "min": 60,
+            "max": 120,
+            "objetivo": 60
+          },
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "manual",
+            "segundos": null,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Solo si caminas cómodamente; no buscar llegar a los 200 metros.",
+            "Entre bloques, descansar sentado hasta recuperarte."
+          ],
+          "adaptacionTobillo": "Omitir si hay fatiga previa, dolor creciente o cambios al caminar.",
+          "seriesPermitidas": {
+            "min": 1,
+            "max": 2
+          },
+          "finalizacion": "manual_o_tiempo"
+        }
+      ]
+    },
+    "recuperacionJueves": {
+      "nombre": "Recuperación y control",
+      "tipo": "recuperacion",
+      "ejercicios": [
+        {
+          "id": "equilibrio-tandem",
+          "nombre": "Equilibrio tándem con apoyo cercano",
+          "descripcion": "Un pie delante del otro; trabajar ambas posiciones.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "tiempo",
+          "repeticiones": null,
+          "duracionSegundos": {
+            "min": 20,
+            "max": 20,
+            "objetivo": 20
+          },
+          "lados": {
+            "modo": "secuencial",
+            "orden": [
+              "izquierdo",
+              "derecho"
+            ],
+            "dosisPorLado": true,
+            "confirmarCambio": true
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 30,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "En cada lado, colocar ese pie delante.",
+            "Mantener una mesa firme al alcance; separar un poco los pies si cuesta.",
+            "Sin cerrar los ojos ni usar superficies inestables."
+          ],
+          "adaptacionTobillo": "Solo sin dolor ni sensación de fallo."
+        },
+        {
+          "id": "brazos-pared",
+          "nombre": "Deslizamientos de brazos en pared, sentado",
+          "descripcion": "Movilidad de hombros.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 2,
+          "tipo": "repeticiones",
+          "repeticiones": {
+            "min": 8,
+            "max": 8
+          },
+          "duracionSegundos": null,
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 45,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Sentado cerca de la pared, deslizar los brazos hacia arriba en recorrido cómodo.",
+            "No arquear la espalda."
+          ],
+          "adaptacionTobillo": ""
+        },
+        {
+          "id": "caminata",
+          "nombre": "Caminata opcional en terreno plano",
+          "descripcion": "Terminar antes de la fatiga del tobillo.",
+          "fase": "ejercicio",
+          "opcional": true,
+          "series": 2,
+          "tipo": "tiempo",
+          "repeticiones": null,
+          "duracionSegundos": {
+            "min": 60,
+            "max": 120,
+            "objetivo": 60
+          },
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "manual",
+            "segundos": null,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Solo si caminas cómodamente; no buscar llegar a los 200 metros.",
+            "Entre bloques, descansar sentado hasta recuperarte."
+          ],
+          "adaptacionTobillo": "Omitir si hay fatiga previa, dolor creciente o cambios al caminar.",
+          "seriesPermitidas": {
+            "min": 1,
+            "max": 2
+          },
+          "finalizacion": "manual_o_tiempo"
+        }
+      ]
+    },
+    "movilidadSabado": {
+      "nombre": "Actividad suave",
+      "tipo": "movilidad",
+      "ejercicios": [
+        {
+          "id": "movilidad-sentado",
+          "nombre": "Movilidad suave sentado",
+          "descripcion": "Hombros, tronco y rodillas.",
+          "fase": "ejercicio",
+          "opcional": false,
+          "series": 1,
+          "tipo": "tiempo",
+          "repeticiones": null,
+          "duracionSegundos": {
+            "min": 300,
+            "max": 480,
+            "objetivo": 300
+          },
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "tiempo",
+            "segundos": 0,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Círculos de hombros, giros suaves de tronco y extensión de rodillas."
+          ],
+          "adaptacionTobillo": ""
+        },
+        {
+          "id": "caminata",
+          "nombre": "Caminata opcional en terreno plano",
+          "descripcion": "Terminar antes de la fatiga del tobillo.",
+          "fase": "ejercicio",
+          "opcional": true,
+          "series": 3,
+          "tipo": "tiempo",
+          "repeticiones": null,
+          "duracionSegundos": {
+            "min": 60,
+            "max": 120,
+            "objetivo": 60
+          },
+          "lados": {
+            "modo": "ninguno",
+            "orden": [],
+            "dosisPorLado": false,
+            "confirmarCambio": false
+          },
+          "descanso": {
+            "tipo": "manual",
+            "segundos": null,
+            "rangoSegundos": null
+          },
+          "recomendaciones": [
+            "Solo si caminas cómodamente; no buscar llegar a los 200 metros.",
+            "Entre bloques, descansar sentado hasta recuperarte."
+          ],
+          "adaptacionTobillo": "Omitir si hay fatiga previa, dolor creciente o cambios al caminar.",
+          "seriesPermitidas": {
+            "min": 1,
+            "max": 3
+          },
+          "finalizacion": "manual_o_tiempo"
+        }
+      ]
+    },
+    "descanso": {
+      "nombre": "Descanso",
+      "tipo": "descanso",
+      "ejercicios": []
+    }
+  }
+}
